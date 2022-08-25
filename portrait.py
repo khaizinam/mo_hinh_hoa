@@ -56,5 +56,4 @@ for indexImg, Ci in enumerate(constain):
     plt.ylabel("Juliet's love for Romeo")
     plt.xlim([-4.5, 4.5])
     plt.ylim([-4.5, 4.5])
-    plt.savefig("portrait"+ str(indexImg) +".png")
     plt.show()
