@@ -8,7 +8,9 @@ from scipy.integrate import odeint
 # − + Cautious Lover
 # − − Hermit
 #R = aR + bJ;
-Ci = [-3, 3, -2, 1]
+# delta < 0 [2 , 4, -2, -2] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
+#delta > 0 [-3 ,3, -2, 1] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
+Ci = [-3 ,3, -2, 1] 
 Sts = [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
 
 def ivpSys(s, t , a, b, c, d):
