@@ -8,20 +8,21 @@ from scipy.integrate import odeint
 # − + Cautious Lover
 # − − Hermit
 #R = aR + bJ;
-# delta < 0 [2 , 4, -2, -2] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
-#delta > 0 [-3 ,3, -2, 1] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
-Ci = [-3 ,3, -2, 1] 
-Sts = [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
-
+# delta > 0 [2 , 4, -2, -2] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
+#delta < 0 [-3 ,3, -2, 1] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
+###################################################
+a = -3
+b = 3
+c = -2
+d = 1
+R0 = -4
+J0 = 2
+Sts = [[R0, J0],[R0,-J0],[-R0,-J0],[-R0,J0]]    
 def ivpSys(s, t , a, b, c, d):
     R,J = s
     dRdt = a * R +b * J
     dJdt = c * R + d * J
     return [dRdt, dJdt]
-a = Ci[0]
-b = Ci[1]
-c = Ci[2]
-d = Ci[3]
 # porttrait
 y1 = np.linspace(-8, 8, 16)
 y2 = np.linspace(-8, 8, 16)
