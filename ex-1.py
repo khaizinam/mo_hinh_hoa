@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import math
 ###################################################
 pi = math.pi
-a = -3
-b = 3
+a = 2
+b = 4
 c = -2
-d = 1
-R0 = -4
-J0 = 2
+d = 2
+R0 = 5/4
+J0 = 5/4
 def delta(a,b,c,d):
     return pow((a + d), 2) - 4 * (a * d - b * c)
 def lamda(a,b,c,d):
@@ -18,15 +18,18 @@ def lamda(a,b,c,d):
         deltaSqrt = math.sqrt(deltaValue)
         lamda1 = (a + b - deltaSqrt) / 2
         lamda2 = (a + b + deltaSqrt) / 2
+        print("delta > 0 : lamda 1: "+str(lamda1)+", lamda2 : "+str(lamda2))
         return [lamda1 , lamda2]
     elif deltaValue == 0 :
         x = ( a + d ) / 2
+        print("delta = 0 : lamda 1: "+str(lamda1)+", lamda2 : "+str(lamda2))
         return x
     else :
         deltaValue = abs(deltaValue)
         deltaSqrt = math.sqrt(deltaValue)
         a1 = ( a + d ) / 2
         b1 = deltaSqrt / 2
+        print("delta < 0 : lamda: "+str(a1)+"+-"+str(b1)+"i")
         return [ a1, b1]
 def Fxy(a,b,c,d,R0,J0 ,k1,k2):
     a1 = 1 ; b1 = 1 ; c1 = R0
@@ -34,6 +37,7 @@ def Fxy(a,b,c,d,R0,J0 ,k1,k2):
     D = a1 * b2 - a2 * b1
     Dx = c1 * b2 - c2 * b1
     Dy = a1 * c2 - a2 * c1
+    print("C 1: "+str(Dx / D)+", C : "+str(Dy / D))
     return [Dx / D, Dy / D]
 def Fxy2(a,b,c,d,R0,J0 ,k):
     a1 = 1 ; b1 = 0 ; c1 = R0
@@ -41,10 +45,12 @@ def Fxy2(a,b,c,d,R0,J0 ,k):
     D = a1 * b2 - a2 * b1
     Dx = c1 * b2 - c2 * b1
     Dy = a1 * c2 - a2 * c1
+    print("C 1: "+str(Dx / D)+", C : "+str(Dy / D))
     return [Dx / D, Dy / D]
 def Fxy3(a,b, R0,J0 , m, n):
     c1 = R0
     c2 = ((b * J0) - ((m - a ) * R0)) / n
+    print("C 1: "+str(c1)+", C : "+str(c2))
     return [c1, c2]
 def fR(t,a,b,c,d,R0,J0):
     deltaValue = delta(a,b,c,d)
@@ -107,12 +113,14 @@ def fJ(t,a,b,c,d,R0,J0):
         J = (1 / b) * ( dRdt - a * R ) 
         return J
 ###########################################
-t = np.linspace(0, 10, 100)
-Rt = np.vectorize(fR)
-Jt = np.vectorize(fJ)
-plt.plot(t,Rt(t,a,b,c,d,R0,J0))
-plt.plot(t,Jt(t,a,b,c,d,R0,J0))
-plt.xlabel("Time")
-plt.ylabel("Love for the other")
-plt.legend(["Romeo's","Juliet's"])
-plt.show()
+print(fR(2,a,b,c,d,R0,J0))
+#print(fJ(1,a,b,c,d,R0,J0))
+# t = np.linspace(0, 10, 100)
+# Rt = np.vectorize(fR)
+# Jt = np.vectorize(fJ)
+# plt.plot(t,Rt(t,a,b,c,d,R0,J0))
+# plt.plot(t,Jt(t,a,b,c,d,R0,J0))
+# plt.xlabel("Time")
+# plt.ylabel("Love for the other")
+# plt.legend(["Romeo's","Juliet's"])
+# plt.show()
