@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import math
 ###################################################
 pi = math.pi
-a = 2
-b = 4
-c = -2
+a = 1
+b = -2
+c = 1
 d = -2
-R0 = 5/4
-J0 = 5/4
+R0 = 4
+J0 = 4
 def delta(a,b,c,d):
     return pow((a + d), 2) - 4 * (a * d - b * c)
 def lamda(a,b,c,d):
@@ -55,7 +55,7 @@ def fR(t,a,b,c,d,R0,J0):
         c2 = Fxy( a, b, c, d, R0, J0, k1, k2 )[1]
         print("delta > 0 ")
         print("lamda 1 : "+str(k1))
-        print("lamda 2 : "+str(k1))
+        print("lamda 2 : "+str(k2))
         print("C 1 : "+str(c1))
         print("C 2 : "+str(c2))
         R = c1 * math.exp(k1 * t) + c2 * math.exp(k2 * t) 
