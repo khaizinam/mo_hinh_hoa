@@ -59,10 +59,6 @@ def fR(t,a,b,c,d,R0,J0):
         print("C 1 : "+str(c1))
         print("C 2 : "+str(c2))
         R = c1 * math.exp(k1 * t) + c2 * math.exp(k2 * t) 
-        # print("k1 = " + str(k1)) 
-        # print("k2 = " + str(k2)) 
-        # print("c1 = " + str(c1)) 
-        # print("c2 = " + str(c2)) 
         return R
     elif deltaValue == 0:
         k = lamda(a,b,c,d)
@@ -72,10 +68,7 @@ def fR(t,a,b,c,d,R0,J0):
         print("lamda : "+str(k1))
         print("C 1 : "+str(c1))
         print("C 2 : "+str(c2))
-        R = c1 * math.exp(k * t) + c2 * math.exp(k * t) 
-        # print("k1 = k2 = " + str(k)) 
-        # print("c1 = " + str(c1)) 
-        # print("c2 = " + str(c2)) 
+        R = c1 * math.exp(k * t) + c2 * math.exp(k * t)  
         return R
     else :
         m = lamda(a,b,c,d)[0]
@@ -87,10 +80,7 @@ def fR(t,a,b,c,d,R0,J0):
         print("lamda 2: "+str(m) + " - " +str(n)+"i")
         print("C 1 : "+str(c1))
         print("C 2 : "+str(c2))
-        R = math.exp(m * t) * (c1 * math.cos((n * t)) + c2 * math.sin((n * t)))
-        # print("k1 = " + str(m) + " +/- " + str(n)+"i") 
-        # print("c1 = " + str(c1)) 
-        # print("c2 = " + str(c2)) 
+        R = math.exp(m * t) * (c1 * math.cos((n * t)) + c2 * math.sin((n * t))) 
         return R
 def fJ(t,a,b,c,d,R0,J0):
     deltaValue = delta(a,b,c,d)
