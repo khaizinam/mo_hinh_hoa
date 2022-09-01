@@ -16,8 +16,8 @@ def lamda(a,b,c,d):
     deltaValue = delta(a,b,c,d)
     if deltaValue > 0 :
         deltaSqrt = math.sqrt(deltaValue)
-        lamda1 = (a + b - deltaSqrt) / 2
-        lamda2 = (a + b + deltaSqrt) / 2
+        lamda1 = (a + d - deltaSqrt) / 2
+        lamda2 = (a + d + deltaSqrt) / 2
         return [lamda1 , lamda2]
     elif deltaValue == 0 :
         x = ( a + d ) / 2
