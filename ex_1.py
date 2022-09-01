@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 import math
 ###################################################
 pi = math.pi
-a = 1
-b = -2
-c = 1
-d = -2
-R0 = 4
-J0 = 4
+a = -3
+b = 3
+c = -2
+d = 1
+R0 = -4
+J0 = 2
+t=0
 def delta(a,b,c,d):
     return pow((a + d), 2) - 4 * (a * d - b * c)
 def lamda(a,b,c,d):
@@ -48,6 +49,8 @@ def Fxy3(a,b, R0,J0 , m, n):
     return [c1, c2]
 def fR(t,a,b,c,d,R0,J0):
     deltaValue = delta(a,b,c,d)
+    print("delta = "+str(deltaValue))
+
     if deltaValue > 0:
         k1 = lamda(a,b,c,d)[0]
         k2 = lamda(a,b,c,d)[1]
@@ -90,6 +93,7 @@ def fJ(t,a,b,c,d,R0,J0):
         c1 = Fxy( a, b, c, d, R0, J0, k1, k2 )[0]
         c2 = Fxy( a, b, c, d, R0, J0, k1, k2 )[1]
         R = fR(t,a,b,c,d,R0,J0)
+        print("R(t = "+str(t)+") = "+str(R))
         dRdt = c1 * k1 * math.exp(k1 * t) + c2 * k2 * math.exp(k2 * t)
         J = (1 / b) * (dRdt - a * R) 
         return J
@@ -98,6 +102,7 @@ def fJ(t,a,b,c,d,R0,J0):
         c1 = R0
         c2 = Fxy( a, b, c, d, R0, J0, k)[1]
         R = fR(t,a,b,c,d,R0,J0)
+        print("R(t = "+str(t)+") = "+str(R))
         dRdt = c1 * k * math.exp(k * t) + c2 * k * math.exp(k * t)
         J = (1 / b) * (dRdt - a * R)
         return J
@@ -107,18 +112,19 @@ def fJ(t,a,b,c,d,R0,J0):
         c1 = Fxy3(a,b, R0,J0 , m, n)[0]
         c2 = Fxy3(a,b, R0,J0 , m, n)[1]
         R = fR(t,a,b,c,d,R0,J0)
+        print("R(t = "+str(t)+") = "+str(R))
         dRdt = m * math.exp(m * t) * (c1 * math.cos((n * t)) + c2 * math.sin((n * t))) + math.exp(m * t) * (- (c1 * n * math.sin((n * t))) + (c2 * n * math.cos((n * t))))
         J = (1 / b) * ( dRdt - a * R ) 
         return J
 ###########################################
-print(fR(2,a,b,c,d,R0,J0))
-#print(fJ(1,a,b,c,d,R0,J0))
-# t = np.linspace(0, 10, 100)
-# Rt = np.vectorize(fR)
-# Jt = np.vectorize(fJ)
-# plt.plot(t,Rt(t,a,b,c,d,R0,J0))
-# plt.plot(t,Jt(t,a,b,c,d,R0,J0))
-# plt.xlabel("Time")
-# plt.ylabel("Love for the other")
-# plt.legend(["Romeo's","Juliet's"])
-# plt.show()
+# print(fR(2,a,b,c,d,R0,J0))
+print("J(t = "+str(t)+") = "+str(fJ(t,a,b,c,d,R0,J0)))
+t = np.linspace(0, 10, 100)
+Rt = np.vectorize(fR)
+Jt = np.vectorize(fJ)
+plt.plot(t,Rt(t,a,b,c,d,R0,J0))
+plt.plot(t,Jt(t,a,b,c,d,R0,J0))
+plt.xlabel("Time")
+plt.ylabel("Love for the other")
+plt.legend(["Romeo's","Juliet's"])
+plt.show()
