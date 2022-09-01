@@ -8,7 +8,7 @@ a = -3
 b = 3
 c = -2
 d = 1
-R0 = 4
+R0 = -4
 J0 = 2
 t=0
 def delta(a,b,c,d):
