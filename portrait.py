@@ -12,7 +12,7 @@ from ex_1 import a, b, c, d, R0, J0
 # delta > 0 [2 , 4, -2, -2] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
 #delta < 0 [-3 ,3, -2, 1] point [[-4, 2],[-4 , -1],[4,-1] ,[4,2]]
 ###################################################
-Sts = [[R0, J0]]    
+Sts = [[R0, J0],[R0 + 0.5, J0 + 0.5],[R0 - 0.5, J0 - 0.5]]    
 def ivpSys(s, t , a, b, c, d):
     R,J = s
     dRdt = a * R +b * J
@@ -44,6 +44,11 @@ for elementSt, St in enumerate(Sts):
     plt.plot(sol[:,0], sol[:,1], color)
     plt.plot([sol[-1,0]], [sol[-1,0]], 'g',linewidth=5.0) # end
 #--
+x = np.linspace(-4.5, 4.5, 100)
+def fx(x,a,b):
+    return -a * x / b
+plt.plot(x,fx(x,a,b))
+plt.plot(x,fx(x,c,d))
 plt.xlabel("Romeo's love for Juliet")
 plt.ylabel("Juliet's love for Romeo")
 plt.legend(["Vector field","Trajectory"])

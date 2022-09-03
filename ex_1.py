@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import math
 ###################################################
 pi = math.pi
-a = -3
-b = 3
+a = 2
+b = 4
 c = -2
-d = 1
-R0 = -4
-J0 = 2
+d = -2
+R0 = 5/4
+J0 = 5/4
 t=0
 def delta(a,b,c,d):
     return pow((a + d), 2) - 4 * (a * d - b * c)
